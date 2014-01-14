@@ -1,6 +1,6 @@
 # ipython notebook
 #
-# VERSION       1
+# VERSION       2
 
 # use the ubuntu base image provided by dotCloud
 FROM studer/arch
@@ -11,7 +11,7 @@ MAINTAINER studer hello@studer.su
 RUN pacman -S --noconfirm ipython2 python2-tornado python2-jinja python2-pyzmq
 
 # Launch ipython2 when launching the container
-ENTRYPOINT ["ipython2", "notebook"]
+ENTRYPOINT ["ipython2", "notebook", "--ip='0.0.0.0'"]
 
 # run ipython2 as the daemon user
 USER daemon
