@@ -1,20 +1,23 @@
 # ipython notebook
 #
-# VERSION       2
+# VERSION       3
 
-# use the ubuntu base image provided by dotCloud
+# use the studer archlinux base image
 FROM studer/arch
 
 MAINTAINER studer hello@studer.su
 
-# install memcached
-RUN pacman -S --noconfirm ipython2 python2-tornado python2-jinja python2-pyzmq
+# install ipython & dependencies
+RUN pacman -S --noconfirm ipython2 python2-tornado python2-jinja python2-pyzmq python2-pip python2-scipy python2-pytz python2-dateutil freetype2
 
-# Launch ipython2 when launching the container
-ENTRYPOINT ["ipython2", "notebook", "--ip='0.0.0.0'"]
+# install matplotlib
+RUN pip2 install matplotlib
 
-# run ipython2 as the daemon user
+# Launch ipython when launching the container
+ENTRYPOINT ["ipython2", "notebook", "--ip='0.0.0.0'", "--pylab", "inline"]
+
+# run ipython as the daemon user
 USER daemon
 
-# expose ipython2 port
+# expose ipython port
 EXPOSE 8888

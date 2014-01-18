@@ -1,8 +1,8 @@
 # archlinux
 #
-# VERSION       1
+# VERSION       2
 
-# use the ubuntu base image provided by dotCloud
+# use the archlinux base image
 FROM base/arch
 
 MAINTAINER studer hello@studer.su
