@@ -1,6 +1,6 @@
 # ipython notebook
 #
-# VERSION       3
+# VERSION       4
 
 # use the studer archlinux base image
 FROM studer/arch
@@ -11,6 +11,7 @@ MAINTAINER studer hello@studer.su
 RUN pacman -S --noconfirm ipython2 python2-tornado python2-jinja python2-pyzmq python2-pip python2-scipy python2-pytz python2-dateutil freetype2
 
 # install matplotlib
+RUN pacman -S --noconfirm base-devel
 RUN pip2 install matplotlib
 
 # Launch ipython when launching the container
